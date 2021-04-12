@@ -1,4 +1,4 @@
-import 'package:music_app_clean_architecture/features/album/domain/entities/tracks.dart';
+import 'package:music_app_clean_architecture/features/album_search/domain/entities/track.dart';
 
 class TrackModel extends Track {
   TrackModel({

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:music_app_clean_architecture/features/album/data/models/album_model.dart';
-import 'package:music_app_clean_architecture/features/album/data/models/image_model.dart';
-import 'package:music_app_clean_architecture/features/album/data/models/tracks_model.dart';
+import 'package:music_app_clean_architecture/features/album_search/data/models/album_model.dart';
+import 'package:music_app_clean_architecture/features/album_search/data/models/image_model.dart';
+import 'package:music_app_clean_architecture/features/album_search/data/models/tracks_model.dart';
 
 import '../../../../fixtures/fixture_reader.dart';
 

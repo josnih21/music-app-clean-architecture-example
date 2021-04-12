@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:music_app_clean_architecture/features/album/domain/entities/album.dart';
-import 'package:music_app_clean_architecture/features/album/domain/entities/image.dart';
-import 'package:music_app_clean_architecture/features/album/domain/entities/tracks.dart';
-import 'package:music_app_clean_architecture/features/album/domain/repositories/album_repository.dart';
-import 'package:music_app_clean_architecture/features/album/domain/usecases/get_album.dart';
+import 'package:music_app_clean_architecture/features/album_search/domain/entities/album.dart';
+import 'package:music_app_clean_architecture/features/album_search/domain/entities/image.dart';
+import 'package:music_app_clean_architecture/features/album_search/domain/entities/track.dart';
+import 'package:music_app_clean_architecture/features/album_search/domain/repositories/album_repository.dart';
+import 'package:music_app_clean_architecture/features/album_search/domain/usecases/get_album.dart';
 
 class MockAlbumRepository extends Mock implements AlbumRepository {}
 

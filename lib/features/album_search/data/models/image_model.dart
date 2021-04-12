@@ -1,4 +1,4 @@
-import 'package:music_app_clean_architecture/features/album/domain/entities/image.dart';
+import 'package:music_app_clean_architecture/features/album_search/domain/entities/image.dart';
 
 class ImageModel extends Image {
   ImageModel({

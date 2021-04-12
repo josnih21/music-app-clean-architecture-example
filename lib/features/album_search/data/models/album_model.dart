@@ -1,6 +1,6 @@
-import 'package:music_app_clean_architecture/features/album/data/models/image_model.dart';
-import 'package:music_app_clean_architecture/features/album/data/models/tracks_model.dart';
-import 'package:music_app_clean_architecture/features/album/domain/entities/album.dart';
+import 'package:music_app_clean_architecture/features/album_search/data/models/image_model.dart';
+import 'package:music_app_clean_architecture/features/album_search/data/models/tracks_model.dart';
+import 'package:music_app_clean_architecture/features/album_search/domain/entities/album.dart';
 
 class AlbumModel extends Album {
   AlbumModel({

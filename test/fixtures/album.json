@@ -1,0 +1,21 @@
+{
+    "album": {
+        "name": "Kill 'Em All",
+        "artist": "Metallica",
+        "mbid": "c06ed440-f25d-3127-aadb-ebe9c685b3d8",
+        "url": "www.dummy.com",
+        "image": [{
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/0e79f0c8fbf341178601367a4a12a890.png",
+            "size": "small"
+        }],
+        "listeners": "11",
+        "playcount": "14394428",
+        "tracks": {
+            "track": []
+        },
+        "tags": {
+            "tag": []
+        },
+        "wiki": {}
+    }
+}

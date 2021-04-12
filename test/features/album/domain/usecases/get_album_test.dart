@@ -27,8 +27,8 @@ void main() {
   ];
   final listeners = '1111';
   final tracks = Tracks(track: [
-    Track('The four horsemen', 'www.dummy.com', '3:50'),
-    Track('Seek and Destroy', 'www.dummy.com', '3:30'),
+    Track(name: 'The four horsemen', url: 'www.dummy.com', duration: '3:50'),
+    Track(name: 'Seek and Destroy', url: 'www.dummy.com', duration: '3:30'),
   ]);
 
   final album = Album(name: name, artist: artist, images: images, listeners: listeners, tracks: tracks, url: url);

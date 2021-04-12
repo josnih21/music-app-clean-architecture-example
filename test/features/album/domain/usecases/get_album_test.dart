@@ -36,7 +36,7 @@ void main() {
   test('should get album from the repository', () async {
     when(mockAlbumRespository.getAlbum(any, any)).thenAnswer((_) async => Right(album));
 
-    final result = await usecase(name: name, artist: artist);
+    final result = await usecase(params: Params(name: name, artist: artist));
 
     expect(result, Right(album));
     verify(mockAlbumRespository.getAlbum(name, artist));

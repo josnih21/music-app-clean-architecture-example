@@ -9,7 +9,7 @@ class GetAlbum {
 
   GetAlbum(this.albumRepository);
 
-  Future<Either<Failure, Album>> execute({
+  Future<Either<Failure, Album>> call({
     @required String name,
     @required String artist,
   }) async {

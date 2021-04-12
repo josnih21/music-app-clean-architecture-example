@@ -11,7 +11,23 @@
         "listeners": "11",
         "playcount": "14394428",
         "tracks": {
-            "track": []
+            "track": [{
+                "name": "Hit the Lights",
+                "url": "https://www.last.fm/music/Metallica/_/Hit+the+Lights",
+                "duration": "257",
+                "@attr": {
+                    "rank": "1"
+                },
+                "streamable": {
+                    "#text": "0",
+                    "fulltrack": "0"
+                },
+                "artist": {
+                    "name": "Metallica",
+                    "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+                    "url": "https://www.last.fm/music/Metallica"
+                }
+            }]
         },
         "tags": {
             "tag": []

@@ -8,7 +8,7 @@ class Album extends Equatable {
   final String url;
   final List<Image> images;
   final String listeners;
-  final Tracks tracks;
+  final List<Track> tracks;
 
   Album({
     this.name,

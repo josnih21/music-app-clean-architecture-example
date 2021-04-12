@@ -26,10 +26,10 @@ void main() {
     Image(text: 'random2.jpg', size: 'big'),
   ];
   final listeners = '1111';
-  final tracks = Tracks(track: [
+  final tracks = [
     Track(name: 'The four horsemen', url: 'www.dummy.com', duration: '3:50'),
     Track(name: 'Seek and Destroy', url: 'www.dummy.com', duration: '3:30'),
-  ]);
+  ];
 
   final album = Album(name: name, artist: artist, images: images, listeners: listeners, tracks: tracks, url: url);
 

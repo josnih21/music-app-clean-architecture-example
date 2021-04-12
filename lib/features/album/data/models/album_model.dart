@@ -9,7 +9,7 @@ class AlbumModel extends Album {
     String url,
     List<ImageModel> images,
     String listeners,
-    TracksModel tracks,
+    List<TrackModel> tracks,
   }) : super(name: name, artist: artist, url: url, images: images, listeners: listeners, tracks: tracks);
 
   factory AlbumModel.fromJson(Map<String, dynamic> json) {
@@ -18,7 +18,7 @@ class AlbumModel extends Album {
         artist: json['album']['artist'],
         url: json['album']['url'],
         images: List<ImageModel>.from(json['album']['image'].map((data) => ImageModel.fromJson(data))),
-        tracks: TracksModel.fromJson(json['album']['tracks']),
+        tracks: List<TrackModel>.from(json['album']["tracks"]["track"].map((x) => TrackModel.fromJson(x))),
         listeners: json['album']['listeners']);
   }
 }

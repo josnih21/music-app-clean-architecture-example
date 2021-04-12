@@ -17,7 +17,10 @@ void main() {
             size: 'small', text: 'https://lastfm.freetls.fastly.net/i/u/34s/0e79f0c8fbf341178601367a4a12a890.png')
       ],
       listeners: '11',
-      tracks: TracksModel(track: []));
+      tracks: [
+        TrackModel(
+            duration: '257', name: 'Hit the Lights', url: 'https://www.last.fm/music/Metallica/_/Hit+the+Lights'),
+      ]);
 
   test('should be a subclass of Album entity', () async {
     expect(albumModel, isA<AlbumModel>());

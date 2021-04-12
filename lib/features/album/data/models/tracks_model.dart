@@ -1,13 +1,5 @@
 import 'package:music_app_clean_architecture/features/album/domain/entities/tracks.dart';
 
-class TracksModel extends Tracks {
-  TracksModel({List<TrackModel> track}) : super(track: track);
-
-  factory TracksModel.fromJson(Map<String, dynamic> json) => TracksModel(
-        track: List<TrackModel>.from(json["track"].map((x) => TrackModel.fromJson(x))),
-      );
-}
-
 class TrackModel extends Track {
   TrackModel({
     String name,

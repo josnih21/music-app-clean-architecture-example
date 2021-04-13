@@ -3,7 +3,7 @@ import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:music_app_clean_architecture/core/error/exception.dart';
 import 'package:music_app_clean_architecture/core/error/failures.dart';
-import 'package:music_app_clean_architecture/core/platform/network_info.dart';
+import 'package:music_app_clean_architecture/core/network/network_info.dart';
 import 'package:music_app_clean_architecture/features/album_search/data/datasources/album_local_data_source.dart';
 import 'package:music_app_clean_architecture/features/album_search/data/datasources/album_remote_data_source.dart';
 import 'package:music_app_clean_architecture/features/album_search/data/models/album_model.dart';

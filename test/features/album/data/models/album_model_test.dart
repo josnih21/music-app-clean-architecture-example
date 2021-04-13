@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:music_app_clean_architecture/features/album_search/data/models/album_model.dart';
 import 'package:music_app_clean_architecture/features/album_search/data/models/image_model.dart';
 import 'package:music_app_clean_architecture/features/album_search/data/models/tracks_model.dart';
+import 'package:music_app_clean_architecture/features/album_search/domain/entities/album.dart';
 
 import '../../../../fixtures/fixture_reader.dart';
 
@@ -23,7 +24,7 @@ void main() {
       ]);
 
   test('should be a subclass of Album entity', () async {
-    expect(albumModel, isA<AlbumModel>());
+    expect(albumModel, isA<Album>());
   });
 
   group('fromJson', () {

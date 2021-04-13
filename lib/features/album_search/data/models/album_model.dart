@@ -1,3 +1,4 @@
+import 'package:dartz/dartz_unsafe.dart';
 import 'package:music_app_clean_architecture/features/album_search/data/models/image_model.dart';
 import 'package:music_app_clean_architecture/features/album_search/data/models/tracks_model.dart';
 import 'package:music_app_clean_architecture/features/album_search/domain/entities/album.dart';
@@ -20,5 +21,18 @@ class AlbumModel extends Album {
         images: List<ImageModel>.from(json['album']['image'].map((data) => ImageModel.fromJson(data))),
         tracks: List<TrackModel>.from(json['album']["tracks"]["track"].map((x) => TrackModel.fromJson(x))),
         listeners: json['album']['listeners']);
+  }
+
+  Map<String, Map<String, dynamic>> toJson() {
+    return {
+      'album': {
+        'name': name,
+        'artist': artist,
+        'url': url,
+        'image': List<dynamic>.from(images.map((image) => image)),
+        'listeners': listeners,
+        'tracks': List<dynamic>.from(tracks.map((track) => track)),
+      }
+    };
   }
 }

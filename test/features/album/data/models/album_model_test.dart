@@ -36,4 +36,27 @@ void main() {
       expect(result, equals(albumModel));
     });
   });
+
+  group('toJson', () {
+    test('should return a JSON containing proper data', () async {
+      final result = albumModel.toJson();
+      final expectedMap = {
+        'album': {
+          "name": "Kill 'Em All",
+          "artist": "Metallica",
+          "url": "www.dummy.com",
+          "image": [
+            ImageModel(
+                size: 'small', text: 'https://lastfm.freetls.fastly.net/i/u/34s/0e79f0c8fbf341178601367a4a12a890.png')
+          ],
+          "listeners": "11",
+          "tracks": [
+            TrackModel(
+                duration: '257', name: 'Hit the Lights', url: 'https://www.last.fm/music/Metallica/_/Hit+the+Lights'),
+          ],
+        }
+      };
+      expect(result, expectedMap);
+    });
+  });
 }

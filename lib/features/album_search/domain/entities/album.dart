@@ -17,5 +17,9 @@ class Album extends Equatable {
     this.images,
     this.listeners,
     this.tracks,
-  }) : super([name, artist, url, images, listeners, tracks]);
+  });
+
+  @override
+  // TODO: implement props
+  List<Object> get props => [name, artist, url, images, listeners, tracks];
 }

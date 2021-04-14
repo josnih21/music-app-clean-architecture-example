@@ -20,5 +20,8 @@ class Params extends Equatable {
   final String name;
   final String artist;
 
-  Params({this.name, this.artist}) : super([name, artist]);
+  Params({this.name, this.artist});
+
+  @override
+  List<Object> get props => [name, artist];
 }

@@ -7,5 +7,8 @@ class Image extends Equatable {
   Image({
     this.text,
     this.size,
-  }) : super([text, size]);
+  });
+
+  @override
+  List<Object> get props => [text, size];
 }

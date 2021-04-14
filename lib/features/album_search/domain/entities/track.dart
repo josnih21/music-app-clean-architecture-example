@@ -9,5 +9,8 @@ class Track extends Equatable {
     this.name,
     this.url,
     this.duration,
-  }) : super([name, url, duration]);
+  });
+
+  @override
+  List<Object> get props => [name, url, duration];
 }

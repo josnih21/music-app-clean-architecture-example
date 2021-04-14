@@ -1,0 +1,37 @@
+{
+    "album": {
+        "name": "Kill 'Em All",
+        "artist": "Metallica",
+        "mbid": "c06ed440-f25d-3127-aadb-ebe9c685b3d8",
+        "url": "www.dummy.com",
+        "image": [{
+            "#text": "https://lastfm.freetls.fastly.net/i/u/34s/0e79f0c8fbf341178601367a4a12a890.png",
+            "size": "small"
+        }],
+        "listeners": "11",
+        "playcount": "14394428",
+        "tracks": {
+            "track": [{
+                "name": "Hit the Lights",
+                "url": "https://www.last.fm/music/Metallica/_/Hit+the+Lights",
+                "duration": "257",
+                "@attr": {
+                    "rank": "1"
+                },
+                "streamable": {
+                    "#text": "0",
+                    "fulltrack": "0"
+                },
+                "artist": {
+                    "name": "Metallica",
+                    "mbid": "65f4f0c5-ef9e-490c-aee3-909e7ae6b2ab",
+                    "url": "https://www.last.fm/music/Metallica"
+                }
+            }]
+        },
+        "tags": {
+            "tag": []
+        },
+        "wiki": {}
+    }
+}

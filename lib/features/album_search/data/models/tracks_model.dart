@@ -12,4 +12,12 @@ class TrackModel extends Track {
         url: json["url"],
         duration: json["duration"],
       );
+
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'url': url,
+      'duration': duration,
+    };
+  }
 }

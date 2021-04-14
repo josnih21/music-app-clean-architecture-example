@@ -1,4 +1,3 @@
-import 'package:dartz/dartz_unsafe.dart';
 import 'package:music_app_clean_architecture/features/album_search/data/models/image_model.dart';
 import 'package:music_app_clean_architecture/features/album_search/data/models/tracks_model.dart';
 import 'package:music_app_clean_architecture/features/album_search/domain/entities/album.dart';

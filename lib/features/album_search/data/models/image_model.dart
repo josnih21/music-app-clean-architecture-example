@@ -10,4 +10,11 @@ class ImageModel extends Image {
         text: json["#text"],
         size: json["size"],
       );
+
+  Map<String, dynamic> toJson() {
+    return {
+      '#text': text,
+      'size': size,
+    };
+  }
 }

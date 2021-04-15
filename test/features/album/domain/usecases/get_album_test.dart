@@ -10,12 +10,12 @@ import 'package:music_app_clean_architecture/features/album_search/domain/usecas
 class MockAlbumRepository extends Mock implements AlbumRepository {}
 
 void main() {
-  GetAlbum usecase;
+  GetAlbumUseCase usecase;
   MockAlbumRepository mockAlbumRespository;
 
   setUp(() {
     mockAlbumRespository = MockAlbumRepository();
-    usecase = GetAlbum(mockAlbumRespository);
+    usecase = GetAlbumUseCase(mockAlbumRespository);
   });
 
   final name = 'Kill ' 'Em All';
@@ -36,7 +36,7 @@ void main() {
   test('should get album from the repository', () async {
     when(mockAlbumRespository.getAlbum(any, any)).thenAnswer((_) async => Right(album));
 
-    final result = await usecase(params: Params(name: name, artist: artist));
+    final result = await usecase(Params(name: name, artist: artist));
 
     expect(result, Right(album));
     verify(mockAlbumRespository.getAlbum(name, artist));

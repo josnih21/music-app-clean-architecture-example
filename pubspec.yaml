@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   # Service locator
-  get_it: ^2.0.1
+  get_it: ^5.0.0	
   # Bloc for state management
   flutter_bloc: ^6.1.0	  # Value equality
   equatable: ^1.0.1

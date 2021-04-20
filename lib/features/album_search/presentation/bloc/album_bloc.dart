@@ -24,7 +24,7 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> {
     yield AlbumInitial();
     if (event is GetAlbum) {
       yield ALbumBlocLoadInProgress();
-      final failureOrAlbum = await getAlbumUseCase(Params(artist: event.artist, name: event.artist));
+      final failureOrAlbum = await getAlbumUseCase(Params(artist: event.artist, name: event.album));
       yield failureOrAlbum.fold(
           (failure) => AlbumBlocLoadFailed(failure is ServerFailure ? 'No album found' : 'No album found in cache'),
           (album) => AlbumBlocLoadFinished(album));

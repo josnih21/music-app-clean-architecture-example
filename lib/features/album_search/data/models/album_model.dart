@@ -22,7 +22,7 @@ class AlbumModel extends Album {
         listeners: json['album']['listeners']);
   }
 
-  Map<String, Map<String, dynamic>> toJson() {
+  dynamic toJson() {
     return {
       'album': {
         'name': name,
@@ -30,7 +30,7 @@ class AlbumModel extends Album {
         'url': url,
         'image': List<dynamic>.from(images.map((image) => image)),
         'listeners': listeners,
-        'tracks': List<dynamic>.from(tracks.map((track) => track)),
+        'tracks': {'track': List<dynamic>.from(tracks.map((track) => track))},
       }
     };
   }

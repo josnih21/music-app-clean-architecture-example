@@ -22,8 +22,8 @@ void main() {
   final artist = 'Metallica';
   final url = 'www.dummy.com';
   final images = [
-    Image(text: 'random.jpg', size: 'small'),
-    Image(text: 'random2.jpg', size: 'big'),
+    ImageEntity(text: 'random.jpg', size: 'small'),
+    ImageEntity(text: 'random2.jpg', size: 'big'),
   ];
   final listeners = '1111';
   final tracks = [

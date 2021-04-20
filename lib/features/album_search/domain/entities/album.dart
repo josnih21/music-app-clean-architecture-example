@@ -6,7 +6,7 @@ class Album extends Equatable {
   final String name;
   final String artist;
   final String url;
-  final List<Image> images;
+  final List<ImageEntity> images;
   final String listeners;
   final List<Track> tracks;
 
@@ -20,6 +20,5 @@ class Album extends Equatable {
   });
 
   @override
-  // TODO: implement props
   List<Object> get props => [name, artist, url, images, listeners, tracks];
 }

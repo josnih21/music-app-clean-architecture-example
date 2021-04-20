@@ -27,7 +27,9 @@ class AlbumLocalDataSourceImpl implements AlbumLocalDataSource {
   Future<AlbumModel> getLastAlbum() {
     final jsonString = sharedPreferences.getString(CACHED_ALBUM);
     if (jsonString != null) {
-      return Future.value(AlbumModel.fromJson(json.decode(jsonString)));
+      var resBody = json.decode(jsonString);
+      print(resBody);
+      return Future.value(AlbumModel.fromJson(resBody));
     } else {
       throw CacheException();
     }

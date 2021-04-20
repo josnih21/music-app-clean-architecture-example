@@ -36,7 +36,7 @@ void main() {
         albumRemoteDataSourceImpl.getAlbum(albumName, artist);
 
         verify(mockHttpClient.get(
-          'http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=$apiKey=$artist&album=$albumName&format=json',
+          'http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=$apiKey&artist=$artist&album=$albumName&format=json',
         ));
       },
     );

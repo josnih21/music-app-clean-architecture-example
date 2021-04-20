@@ -17,7 +17,7 @@ void main() {
   });
 
   group('fromJson', () {
-    test('should return valid image model when album is requested', () async {
+    test('should return valid track model when album is requested', () async {
       final Map<String, dynamic> jsonMap = json.decode(fixture('album.json'));
 
       final result = AlbumModel.fromJson(jsonMap).tracks;

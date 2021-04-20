@@ -16,7 +16,7 @@ void main() {
   ];
 
   test('should be a subclass of Image entity', () async {
-    expect(imageModel, isA<List<Image>>());
+    expect(imageModel, isA<List<ImageEntity>>());
   });
 
   group('fromJson', () {

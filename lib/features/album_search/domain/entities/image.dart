@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 
-class Image extends Equatable {
+class ImageEntity extends Equatable {
   final text;
   final size;
 
-  Image({
+  ImageEntity({
     this.text,
     this.size,
   });

@@ -18,9 +18,9 @@ class AlbumRemoteDataSourceImpl implements AlbumRemoteDataSource {
 
   @override
   Future<AlbumModel> getAlbum(String name, String artist) async {
-    final response = await client
-        .get('http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=$apiKey=$artist&album=$name&format=json');
-    if (response.statusCode == 200) {
+    final response = await client.get(
+        'http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=$apiKey&artist=$artist&album=$name&format=json');
+    if (response.statusCode == 200 && !response.body.contains('Album not found')) {
       return AlbumModel.fromJson(jsonDecode(response.body));
     } else {
       throw ServerException();

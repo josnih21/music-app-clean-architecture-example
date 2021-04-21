@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'dart:io';
 
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:music_app_clean_architecture/core/error/exception.dart';
 import 'package:music_app_clean_architecture/features/album_search/data/models/album_model.dart';
 import 'package:http/http.dart' as http;

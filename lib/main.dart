@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 import 'package:music_app_clean_architecture/features/album_search/presentation/pages/album_search_page.dart';
 import 'injection_container.dart' as dependecyInjector;
 

@@ -29,7 +29,7 @@ class AlbumDisplay extends StatelessWidget {
               itemBuilder: (BuildContext context, dynamic index) {
                 return ListTile(
                   title: Text(album.tracks[index].name),
-                  subtitle: Text(album.tracks[index].duration),
+                  subtitle: Text(album.tracks[index].durationInMinutesAndSeconds()),
                 );
               },
             )

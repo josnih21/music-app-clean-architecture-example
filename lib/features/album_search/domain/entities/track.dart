@@ -13,4 +13,10 @@ class Track extends Equatable {
 
   @override
   List<Object> get props => [name, url, duration];
+
+  String durationInMinutesAndSeconds() {
+    var minutes = (int.parse(duration)) ~/ 60;
+    var seconds = ((int.parse(duration)) % 60).toString().padLeft(2, '0');
+    return "$minutes:$seconds";
+  }
 }

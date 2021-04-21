@@ -29,6 +29,17 @@ class _AlbumSearchPageState extends State<AlbumSearchPage> {
     );
   }
 
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    albumBloc.close();
+    super.dispose();
+  }
+
   BlocProvider<AlbumBloc> buildBody(BuildContext context) {
     return BlocProvider(
         create: (BuildContext context) => albumBloc,
@@ -38,25 +49,31 @@ class _AlbumSearchPageState extends State<AlbumSearchPage> {
             child: Column(
               children: [
                 SizedBox(height: 20),
-                BlocBuilder<AlbumBloc, AlbumState>(
-                  builder: (context, state) {
-                    if (state is AlbumInitial) {
-                      return MessageDisplay(
-                        message: 'Fill fields to find an album',
-                      );
-                    } else if (state is ALbumBlocLoadInProgress) {
-                      return LoadingWidget();
-                    } else if (state is AlbumBlocLoadFinished) {
+                BlocListener<AlbumBloc, AlbumState>(
+                  listener: (context, state) {
+                    if (state is AlbumBlocLoadFinished) {
                       navigateToAlbumDetails(state.album);
-                      return Container();
-                    } else if (state is AlbumBlocLoadFailed) {
-                      return MessageDisplay(
-                        message: state.message,
-                      );
-                    } else {
-                      return Container();
                     }
                   },
+                  child: BlocBuilder<AlbumBloc, AlbumState>(
+                    builder: (context, state) {
+                      if (state is AlbumInitial) {
+                        return MessageDisplay(
+                          message: 'Fill fields to find an album',
+                        );
+                      } else if (state is ALbumBlocLoadInProgress) {
+                        return LoadingWidget();
+                      } else if (state is AlbumBlocLoadFailed) {
+                        return MessageDisplay(
+                          message: state.message,
+                        );
+                      } else {
+                        return MessageDisplay(
+                          message: 'Fill fields to find an album',
+                        );
+                      }
+                    },
+                  ),
                 ),
                 SizedBox(height: 20),
                 Column(

@@ -14,6 +14,19 @@ class _AlbumDetailsPageState extends State<AlbumDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: FlatButton(
+          child: Icon(Icons.arrow_back_ios_rounded),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        centerTitle: true,
+        title: Text(
+          'Album details',
+        ),
+      ),
+      extendBodyBehindAppBar: true,
       body: buildBody(context),
     );
   }

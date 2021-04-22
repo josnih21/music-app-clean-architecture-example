@@ -6,7 +6,9 @@ class LoadingWidget extends StatelessWidget {
     return Container(
       height: MediaQuery.of(context).size.height / 2,
       alignment: Alignment.center,
-      child: CircularProgressIndicator(),
+      child: CircularProgressIndicator(
+        valueColor: new AlwaysStoppedAnimation<Color>(Colors.orange),
+      ),
     );
   }
 }

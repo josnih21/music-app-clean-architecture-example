@@ -9,6 +9,7 @@ class Album extends Equatable {
   final List<ImageEntity> images;
   final String listeners;
   final List<Track> tracks;
+  final String wiki;
 
   Album({
     this.name,
@@ -17,8 +18,13 @@ class Album extends Equatable {
     this.images,
     this.listeners,
     this.tracks,
+    this.wiki,
   });
 
   @override
   List<Object> get props => [name, artist, url, images, listeners, tracks];
+
+  String getExtraLargeImageUrl() {
+    return images.firstWhere((image) => image.size == 'extralarge').text;
+  }
 }

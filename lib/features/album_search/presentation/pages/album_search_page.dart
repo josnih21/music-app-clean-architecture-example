@@ -49,64 +49,87 @@ class _AlbumSearchPageState extends State<AlbumSearchPage> {
             child: Column(
               children: [
                 SizedBox(height: 20),
-                BlocListener<AlbumBloc, AlbumState>(
-                  listener: (context, state) {
-                    if (state is AlbumBlocLoadFinished) {
-                      navigateToAlbumDetails(state.album);
-                    }
-                  },
-                  child: BlocBuilder<AlbumBloc, AlbumState>(
-                    builder: (context, state) {
-                      if (state is AlbumInitial) {
-                        return MessageDisplay(
-                          message: 'Fill fields to find an album',
-                        );
-                      } else if (state is ALbumBlocLoadInProgress) {
-                        return LoadingWidget();
-                      } else if (state is AlbumBlocLoadFailed) {
-                        return MessageDisplay(
-                          message: state.message,
-                        );
-                      } else {
-                        return MessageDisplay(
-                          message: 'Fill fields to find an album',
-                        );
-                      }
-                    },
-                  ),
-                ),
+                builBlocListener(),
                 SizedBox(height: 20),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    TextField(
-                      controller: textControllerArtist,
-                      onChanged: (value) => artistName = value,
-                      decoration: InputDecoration(border: OutlineInputBorder(), hintText: 'Type artist name'),
-                    ),
-                    SizedBox(height: 10),
-                    TextField(
-                      controller: textControllerAlbum,
-                      onChanged: (value) {
-                        albumName = value;
-                      },
-                      decoration: InputDecoration(border: OutlineInputBorder(), hintText: 'Type album name'),
-                    ),
-                    SizedBox(height: 50),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: RaisedButton(
-                        onPressed: dispachAlbumSearch,
-                        color: Colors.orange,
-                        child: Text('Search album'),
-                      ),
-                    ),
-                  ],
-                )
+                buildAlbumSearchControls(),
               ],
             ),
           ),
         ));
+  }
+
+  Widget buildAlbumSearchControls() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        TextField(
+          controller: textControllerArtist,
+          cursorColor: Colors.orange,
+          onChanged: (value) => artistName = value,
+          decoration: InputDecoration(
+            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.orange)),
+            border: OutlineInputBorder(),
+            hintText: 'Type artist name',
+            focusColor: Colors.orange,
+          ),
+        ),
+        SizedBox(height: 10),
+        TextField(
+          controller: textControllerAlbum,
+          cursorColor: Colors.orange,
+          onChanged: (value) {
+            albumName = value;
+          },
+          decoration: InputDecoration(
+            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.orange)),
+            border: OutlineInputBorder(),
+            hintText: 'Type album name',
+          ),
+        ),
+        SizedBox(height: 50),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: RaisedButton(
+            onPressed: dispachAlbumSearch,
+            color: Colors.orange,
+            child: Text('Search album'),
+          ),
+        ),
+      ],
+    );
+  }
+
+  BlocListener builBlocListener() {
+    return BlocListener<AlbumBloc, AlbumState>(
+      listener: (context, state) {
+        if (state is AlbumBlocLoadFinished) {
+          navigateToAlbumDetails(state.album);
+        }
+      },
+      child: buildBlocBuilder(),
+    );
+  }
+
+  BlocBuilder buildBlocBuilder() {
+    return BlocBuilder<AlbumBloc, AlbumState>(
+      builder: (context, state) {
+        if (state is AlbumInitial) {
+          return MessageDisplay(
+            message: 'Fill fields to find an album',
+          );
+        } else if (state is ALbumBlocLoadInProgress) {
+          return LoadingWidget();
+        } else if (state is AlbumBlocLoadFailed) {
+          return MessageDisplay(
+            message: state.message,
+          );
+        } else {
+          return MessageDisplay(
+            message: 'Fill fields to find an album',
+          );
+        }
+      },
+    );
   }
 
   void dispachAlbumSearch() {
@@ -117,15 +140,13 @@ class _AlbumSearchPageState extends State<AlbumSearchPage> {
   }
 
   void navigateToAlbumDetails(Album album) {
-    SchedulerBinding.instance.addPostFrameCallback((_) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => AlbumDetailsPage(
-            album: album,
-          ),
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => AlbumDetailsPage(
+          album: album,
         ),
-      );
-    });
+      ),
+    );
   }
 }

@@ -8,7 +8,7 @@ class ImageEntity extends Equatable {
     this.text,
     this.size,
   });
-
+//add random line
   @override
   List<Object> get props => [text, size];
 }

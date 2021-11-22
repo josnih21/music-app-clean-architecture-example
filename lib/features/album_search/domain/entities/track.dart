@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 
 class Track extends Equatable {
-  final String name;
-  final String url;
-  final String duration;
+  final String? name;
+  final String? url;
+  final int? duration;
 
   Track({
     this.name,
@@ -12,11 +12,11 @@ class Track extends Equatable {
   });
 
   @override
-  List<Object> get props => [name, url, duration];
+  List<Object?> get props => [name, url, duration];
 
   String durationInMinutesAndSeconds() {
-    var minutes = (int.parse(duration)) ~/ 60;
-    var seconds = ((int.parse(duration)) % 60).toString().padLeft(2, '0');
+    var minutes = duration! ~/ 60;
+    var seconds = (duration! % 60).toString().padLeft(2, '0');
     return "$minutes:$seconds";
   }
 }

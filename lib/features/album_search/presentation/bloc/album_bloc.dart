@@ -12,7 +12,7 @@ part 'album_state.dart';
 class AlbumBloc extends Bloc<AlbumEvent, AlbumState> {
   final GetAlbumUseCase getAlbumUseCase;
 
-  AlbumBloc({GetAlbumUseCase getAlbum})
+  AlbumBloc({required GetAlbumUseCase getAlbum})
       : assert(getAlbum != null),
         getAlbumUseCase = getAlbum,
         super(AlbumInitial());

@@ -4,13 +4,13 @@ import 'package:music_app_clean_architecture/features/album_search/domain/entiti
 
 class AlbumModel extends Album {
   AlbumModel({
-    String name,
-    String artist,
-    String url,
-    List<ImageModel> images,
-    String listeners,
-    List<TrackModel> tracks,
-    String wiki,
+    String? name,
+    String? artist,
+    String? url,
+    List<ImageModel>? images,
+    String? listeners,
+    List<TrackModel>? tracks,
+    String? wiki,
   }) : super(
           name: name,
           artist: artist,
@@ -39,9 +39,9 @@ class AlbumModel extends Album {
         'name': name,
         'artist': artist,
         'url': url,
-        'image': List<dynamic>.from(images.map((image) => image)),
+        'image': List<dynamic>.from(images!.map((image) => image)),
         'listeners': listeners,
-        'tracks': {'track': List<dynamic>.from(tracks.map((track) => track))},
+        'tracks': {'track': List<dynamic>.from(tracks!.map((track) => track))},
       }
     };
   }

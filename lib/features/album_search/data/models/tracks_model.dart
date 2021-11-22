@@ -2,9 +2,9 @@ import 'package:music_app_clean_architecture/features/album_search/domain/entiti
 
 class TrackModel extends Track {
   TrackModel({
-    String name,
-    String url,
-    String duration,
+    String? name,
+    String? url,
+    int? duration,
   }) : super(name: name, url: url, duration: duration);
 
   factory TrackModel.fromJson(Map<String, dynamic> json) => TrackModel(

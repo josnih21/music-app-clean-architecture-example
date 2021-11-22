@@ -16,7 +16,7 @@ class AlbumSearchPage extends StatefulWidget {
 class _AlbumSearchPageState extends State<AlbumSearchPage> {
   final textControllerAlbum = TextEditingController();
   final textControllerArtist = TextEditingController();
-  AlbumBloc albumBloc = serviceLocator<AlbumBloc>();
+  AlbumBloc? albumBloc = serviceLocator<AlbumBloc>();
   var albumName;
   var artistName;
 
@@ -36,13 +36,13 @@ class _AlbumSearchPageState extends State<AlbumSearchPage> {
 
   @override
   void dispose() {
-    albumBloc.close();
+    albumBloc!.close();
     super.dispose();
   }
 
   BlocProvider<AlbumBloc> buildBody(BuildContext context) {
     return BlocProvider(
-        create: (BuildContext context) => albumBloc,
+        create: (BuildContext context) => albumBloc!,
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(15.0),
@@ -136,7 +136,7 @@ class _AlbumSearchPageState extends State<AlbumSearchPage> {
     textControllerAlbum.clear();
     textControllerArtist.clear();
 
-    albumBloc.add(GetAlbum(albumName, artistName));
+    albumBloc!.add(GetAlbum(albumName, artistName));
   }
 
   void navigateToAlbumDetails(Album album) {

@@ -14,7 +14,7 @@
             "track": [{
                 "name": "Hit the Lights",
                 "url": "https://www.last.fm/music/Metallica/_/Hit+the+Lights",
-                "duration": "257",
+                "duration": 257,
                 "@attr": {
                     "rank": "1"
                 },

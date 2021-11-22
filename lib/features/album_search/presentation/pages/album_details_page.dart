@@ -3,7 +3,7 @@ import 'package:music_app_clean_architecture/features/album_search/domain/entiti
 import 'package:music_app_clean_architecture/features/album_search/presentation/widgets/album_display.dart';
 
 class AlbumDetailsPage extends StatefulWidget {
-  final Album album;
+  final Album? album;
   AlbumDetailsPage({this.album});
 
   @override

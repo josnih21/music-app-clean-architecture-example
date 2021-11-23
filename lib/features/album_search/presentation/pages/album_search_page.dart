@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_app_clean_architecture/features/album_search/domain/entities/album.dart';
 import 'package:music_app_clean_architecture/features/album_search/presentation/bloc/album_bloc.dart';
@@ -59,6 +58,8 @@ class _AlbumSearchPageState extends State<AlbumSearchPage> {
   }
 
   Widget buildAlbumSearchControls() {
+    final ButtonStyle style =
+        ElevatedButton.styleFrom(primary: Colors.orange);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -89,9 +90,9 @@ class _AlbumSearchPageState extends State<AlbumSearchPage> {
         SizedBox(height: 50),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: RaisedButton(
+          child: ElevatedButton(
             onPressed: dispachAlbumSearch,
-            color: Colors.orange,
+            style: style,
             child: Text('Search album'),
           ),
         ),

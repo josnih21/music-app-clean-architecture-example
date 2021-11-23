@@ -1,25 +1,24 @@
 import 'package:dartz/dartz.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
+import 'album_bloc_test.mocks.dart';
 import 'package:music_app_clean_architecture/core/error/failures.dart';
 import 'package:music_app_clean_architecture/features/album_search/domain/entities/album.dart';
 import 'package:music_app_clean_architecture/features/album_search/domain/usecases/get_album.dart';
 import 'package:music_app_clean_architecture/features/album_search/presentation/bloc/album_bloc.dart';
 
-class MockGetAlbumUseCase extends Mock implements GetAlbumUseCase {}
-
+@GenerateMocks([GetAlbumUseCase])
 void main() {
-  AlbumBloc albumBloc;
-  MockGetAlbumUseCase mockGetAlbumUseCase;
-
+  AlbumBloc? albumBloc;
+  final mockGetAlbumUseCase = MockGetAlbumUseCase();
   setUp(() {
-    mockGetAlbumUseCase = MockGetAlbumUseCase();
     albumBloc = AlbumBloc(
       getAlbum: mockGetAlbumUseCase,
     );
   });
   test(('initialState should be AlbumInitial'), () {
-    expect(albumBloc.state, equals(AlbumInitial()));
+    expect(albumBloc!.state, equals(AlbumInitial()));
   });
 
   group(('GetAlbum'), () {
@@ -35,7 +34,7 @@ void main() {
     );
 
     test(('should emit [ALbumBlocLoadInProgress and AlbumBlocLoadFinished] when data is gotten succesfully'), () async {
-      when(mockGetAlbumUseCase(any)).thenAnswer((_) async => Right(album));
+      when(mockGetAlbumUseCase(Params(name:"Kill 'Em All", artist: "Metallica"))).thenAnswer((_) async => Right(album));
 
       final expect = [
         AlbumInitial(),
@@ -43,11 +42,11 @@ void main() {
         AlbumBlocLoadFinished(album),
       ];
 
-      expectLater(albumBloc, emitsInOrder(expect));
-      albumBloc.add(GetAlbum(albumName, artist));
+      expectLater(albumBloc?.stream, emitsInOrder(expect));
+      albumBloc!.add(GetAlbum(albumName, artist));
     });
     test(('should emit [AlbumBlocLoadInProgress and AlbumBlocLoadFailed] when data not gotten succesfully'), () async {
-      when(mockGetAlbumUseCase(any)).thenAnswer((_) async => Left(ServerFailure()));
+      when(mockGetAlbumUseCase(Params(name:"Kill 'Em All", artist: "Metallica"))).thenAnswer((_) async => Left(ServerFailure()));
 
       final expect = [
         AlbumInitial(),
@@ -55,11 +54,11 @@ void main() {
         AlbumBlocLoadFailed('No album found'),
       ];
 
-      expectLater(albumBloc, emitsInOrder(expect));
-      albumBloc.add(GetAlbum(albumName, artist));
+      expectLater(albumBloc?.stream, emitsInOrder(expect));
+      albumBloc!.add(GetAlbum(albumName, artist));
     });
     test(('should emit [AlbumBlocLoadInProgress and AlbumBlocLoadFailed] when data not gotten succesfully'), () async {
-      when(mockGetAlbumUseCase(any)).thenAnswer((_) async => Left(CacheFailure()));
+      when(mockGetAlbumUseCase(Params(name:"Kill 'Em All", artist: "Metallica"))).thenAnswer((_) async => Left(CacheFailure()));
 
       final expect = [
         AlbumInitial(),
@@ -67,8 +66,8 @@ void main() {
         AlbumBlocLoadFailed('No album found in cache'),
       ];
 
-      expectLater(albumBloc, emitsInOrder(expect));
-      albumBloc.add(GetAlbum(albumName, artist));
+      expectLater(albumBloc?.stream, emitsInOrder(expect));
+      albumBloc!.add(GetAlbum(albumName, artist));
     });
   });
 }

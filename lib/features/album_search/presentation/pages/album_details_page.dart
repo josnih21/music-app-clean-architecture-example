@@ -15,7 +15,7 @@ class _AlbumDetailsPageState extends State<AlbumDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: FlatButton(
+        leading: TextButton(
           child: Icon(Icons.arrow_back_ios_rounded),
           onPressed: () => Navigator.of(context).pop(),
         ),

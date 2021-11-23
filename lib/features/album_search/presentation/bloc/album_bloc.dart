@@ -13,6 +13,7 @@ class AlbumBloc extends Bloc<AlbumEvent, AlbumState> {
   final GetAlbumUseCase getAlbumUseCase;
 
   AlbumBloc({required GetAlbumUseCase getAlbum})
+      // ignore: unnecessary_null_comparison
       : assert(getAlbum != null),
         getAlbumUseCase = getAlbum,
         super(AlbumInitial());

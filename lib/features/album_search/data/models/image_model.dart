@@ -2,8 +2,8 @@ import 'package:music_app_clean_architecture/features/album_search/domain/entiti
 
 class ImageModel extends ImageEntity {
   ImageModel({
-    String text,
-    String size,
+    String? text,
+    String? size,
   }) : super(text: text, size: size);
 
   factory ImageModel.fromJson(Map<String, dynamic> json) => ImageModel(

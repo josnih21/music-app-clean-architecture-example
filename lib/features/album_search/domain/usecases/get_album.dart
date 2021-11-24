@@ -6,22 +6,22 @@ import 'package:music_app_clean_architecture/features/album_search/domain/entiti
 import 'package:music_app_clean_architecture/features/album_search/domain/repositories/album_repository.dart';
 
 class GetAlbumUseCase implements UseCase<Album, Params> {
-  final AlbumRepository albumRepository;
+  final AlbumRepository? albumRepository;
 
   GetAlbumUseCase(this.albumRepository);
 
   @override
   Future<Either<Failure, Album>> call(Params params) async {
-    return await albumRepository.getAlbum(params.name, params.artist);
+    return await albumRepository!.getAlbum(params.name, params.artist);
   }
 }
 
 class Params extends Equatable {
-  final String name;
-  final String artist;
+  final String? name;
+  final String? artist;
 
   Params({this.name, this.artist});
 
   @override
-  List<Object> get props => [name, artist];
+  List<Object?> get props => [name, artist];
 }

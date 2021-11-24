@@ -20,7 +20,7 @@ void main() {
       listeners: '11',
       tracks: [
         TrackModel(
-            duration: '257', name: 'Hit the Lights', url: 'https://www.last.fm/music/Metallica/_/Hit+the+Lights'),
+            duration: 257, name: 'Hit the Lights', url: 'https://www.last.fm/music/Metallica/_/Hit+the+Lights'),
       ]);
 
   test('should be a subclass of Album entity', () async {
@@ -53,7 +53,7 @@ void main() {
           "tracks": {
             'track': [
               TrackModel(
-                  duration: '257', name: 'Hit the Lights', url: 'https://www.last.fm/music/Metallica/_/Hit+the+Lights'),
+                  duration: 257, name: 'Hit the Lights', url: 'https://www.last.fm/music/Metallica/_/Hit+the+Lights'),
             ],
           }
         }

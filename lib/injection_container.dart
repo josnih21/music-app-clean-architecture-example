@@ -1,4 +1,4 @@
-import 'package:data_connection_checker/data_connection_checker.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get_it/get_it.dart';
 import 'package:music_app_clean_architecture/core/network/network_info.dart';
 import 'package:music_app_clean_architecture/features/album_search/data/datasources/album_local_data_source.dart';
@@ -37,5 +37,5 @@ Future<void> init() async {
   final sharedPreferences = await SharedPreferences.getInstance();
   serviceLocator.registerLazySingleton(() => sharedPreferences);
   serviceLocator.registerLazySingleton(() => http.Client());
-  serviceLocator.registerLazySingleton(() => DataConnectionChecker());
+  serviceLocator.registerLazySingleton(() => Connectivity());
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_app_clean_architecture/features/album_search/domain/entities/album.dart';
 import 'package:music_app_clean_architecture/features/album_search/presentation/bloc/album_bloc.dart';
@@ -16,7 +15,7 @@ class AlbumSearchPage extends StatefulWidget {
 class _AlbumSearchPageState extends State<AlbumSearchPage> {
   final textControllerAlbum = TextEditingController();
   final textControllerArtist = TextEditingController();
-  AlbumBloc albumBloc = serviceLocator<AlbumBloc>();
+  AlbumBloc? albumBloc = serviceLocator<AlbumBloc>();
   var albumName;
   var artistName;
 
@@ -36,13 +35,13 @@ class _AlbumSearchPageState extends State<AlbumSearchPage> {
 
   @override
   void dispose() {
-    albumBloc.close();
+    albumBloc!.close();
     super.dispose();
   }
 
   BlocProvider<AlbumBloc> buildBody(BuildContext context) {
     return BlocProvider(
-        create: (BuildContext context) => albumBloc,
+        create: (BuildContext context) => albumBloc!,
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(15.0),
@@ -59,6 +58,8 @@ class _AlbumSearchPageState extends State<AlbumSearchPage> {
   }
 
   Widget buildAlbumSearchControls() {
+    final ButtonStyle style =
+        ElevatedButton.styleFrom(primary: Colors.orange);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -89,9 +90,9 @@ class _AlbumSearchPageState extends State<AlbumSearchPage> {
         SizedBox(height: 50),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: RaisedButton(
+          child: ElevatedButton(
             onPressed: dispachAlbumSearch,
-            color: Colors.orange,
+            style: style,
             child: Text('Search album'),
           ),
         ),
@@ -136,7 +137,7 @@ class _AlbumSearchPageState extends State<AlbumSearchPage> {
     textControllerAlbum.clear();
     textControllerArtist.clear();
 
-    albumBloc.add(GetAlbum(albumName, artistName));
+    albumBloc!.add(GetAlbum(albumName, artistName));
   }
 
   void navigateToAlbumDetails(Album album) {

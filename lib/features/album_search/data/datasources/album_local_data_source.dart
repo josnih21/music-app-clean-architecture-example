@@ -14,18 +14,18 @@ abstract class AlbumLocalDataSource {
 const CACHED_ALBUM = 'CACHED_ALBUM';
 
 class AlbumLocalDataSourceImpl implements AlbumLocalDataSource {
-  final SharedPreferences sharedPreferences;
+  final SharedPreferences? sharedPreferences;
 
   AlbumLocalDataSourceImpl({this.sharedPreferences});
 
   @override
   Future<void> cacheAlbum(AlbumModel albumToCache) {
-    return sharedPreferences.setString(CACHED_ALBUM, json.encode(albumToCache.toJson()));
+    return sharedPreferences!.setString(CACHED_ALBUM, json.encode(albumToCache.toJson()));
   }
 
   @override
   Future<AlbumModel> getLastAlbum() {
-    final jsonString = sharedPreferences.getString(CACHED_ALBUM);
+    final jsonString = sharedPreferences!.getString(CACHED_ALBUM);
     if (jsonString != null) {
       var resBody = json.decode(jsonString);
       print(resBody);

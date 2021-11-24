@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MessageDisplay extends StatelessWidget {
-  final String message;
+  final String? message;
 
   const MessageDisplay({this.message});
 
@@ -15,7 +15,7 @@ class MessageDisplay extends StatelessWidget {
             child: Center(
               child: SingleChildScrollView(
                 child: Text(
-                  message,
+                  message!,
                   style: TextStyle(fontSize: 20),
                   textAlign: TextAlign.center,
                 ),

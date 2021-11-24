@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -17,10 +18,10 @@ class MockLocalDataSource extends Mock implements AlbumLocalDataSource {}
 class MockNetworkInfo extends Mock implements NetworkInfo {}
 
 void main() {
-  AlbumRepositoryImpl albumRepositoryImpl;
-  MockRemoteDataSource mockRemoteDataSource;
-  MockLocalDataSource mockLocalDataSource;
-  MockNetworkInfo mockNetworkInfo;
+  late AlbumRepositoryImpl albumRepositoryImpl;
+  MockRemoteDataSource? mockRemoteDataSource;
+  MockLocalDataSource? mockLocalDataSource;
+  MockNetworkInfo? mockNetworkInfo;
 
   setUp(() {
     mockRemoteDataSource = MockRemoteDataSource();
@@ -36,7 +37,7 @@ void main() {
   void runTestOnline(Function body) {
     group('device is online', () {
       setUp(() {
-        when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
+        when(mockNetworkInfo!.isConnected).thenAnswer((_) async => ConnectivityResult.wifi);
       });
 
       body();
@@ -46,7 +47,7 @@ void main() {
   void runTestOffline(Function body) {
     group('device is offline', () {
       setUp(() {
-        when(mockNetworkInfo.isConnected).thenAnswer((_) async => false);
+        when(mockNetworkInfo!.isConnected).thenAnswer((_) async => ConnectivityResult.none);
       });
 
       body();
@@ -62,35 +63,35 @@ void main() {
     final Album album = albumModel;
 
     test('should check if device is online', () async {
-      when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
+      when(mockNetworkInfo!.isConnected).thenAnswer((_) async => ConnectivityResult.wifi);
 
       albumRepositoryImpl.getAlbum(name, artist);
-      verify(mockNetworkInfo.isConnected);
+      verify(mockNetworkInfo!.isConnected);
     });
 
     runTestOnline(() {
       test('should return remote data when the call to remote data source is successfull', () async {
-        when(mockRemoteDataSource.getAlbum(any, any)).thenAnswer((_) async => albumModel);
+        when(mockRemoteDataSource!.getAlbum(any, any)).thenAnswer((_) async => albumModel);
 
         final result = await albumRepositoryImpl.getAlbum(name, artist);
-        verify(mockRemoteDataSource.getAlbum(name, artist));
+        verify(mockRemoteDataSource!.getAlbum(name, artist));
         expect(result, equals(Right(album)));
       });
 
       test('should cache data locally when the call to remote data source is successfull', () async {
-        when(mockRemoteDataSource.getAlbum(any, any)).thenAnswer((_) async => albumModel);
+        when(mockRemoteDataSource!.getAlbum(any, any)).thenAnswer((_) async => albumModel);
 
         final result = await albumRepositoryImpl.getAlbum(name, artist);
-        verify(mockRemoteDataSource.getAlbum(name, artist));
-        verify(mockLocalDataSource.cacheAlbum(albumModel));
+        verify(mockRemoteDataSource!.getAlbum(name, artist));
+        verify(mockLocalDataSource!.cacheAlbum(albumModel));
         expect(result, equals(Right(album)));
       });
 
       test('should return ServerFailure  when the call to remote data source is unsuccessfull', () async {
-        when(mockRemoteDataSource.getAlbum(any, any)).thenThrow(ServerException());
+        when(mockRemoteDataSource!.getAlbum(any, any)).thenThrow(ServerException());
 
         final result = await albumRepositoryImpl.getAlbum(name, artist);
-        verify(mockRemoteDataSource.getAlbum(name, artist));
+        verify(mockRemoteDataSource!.getAlbum(name, artist));
         verifyZeroInteractions(mockLocalDataSource);
         expect(result, equals(Left(ServerFailure())));
       });
@@ -98,19 +99,19 @@ void main() {
 
     runTestOffline(() {
       test('should return last local cache data when the cache data is present', () async {
-        when(mockLocalDataSource.getLastAlbum()).thenAnswer((_) async => albumModel);
+        when(mockLocalDataSource!.getLastAlbum()).thenAnswer((_) async => albumModel);
 
         final result = await albumRepositoryImpl.getAlbum(name, artist);
         verifyZeroInteractions(mockRemoteDataSource);
-        verify(mockLocalDataSource.getLastAlbum());
+        verify(mockLocalDataSource!.getLastAlbum());
         expect(result, equals(Right(album)));
       });
       test('should return CacheFailure when there is no cache data present', () async {
-        when(mockLocalDataSource.getLastAlbum()).thenThrow(CacheException());
+        when(mockLocalDataSource!.getLastAlbum()).thenThrow(CacheException());
 
         final result = await albumRepositoryImpl.getAlbum(name, artist);
         verifyZeroInteractions(mockRemoteDataSource);
-        verify(mockLocalDataSource.getLastAlbum());
+        verify(mockLocalDataSource!.getLastAlbum());
         expect(result, equals(Left(CacheFailure())));
       });
     });

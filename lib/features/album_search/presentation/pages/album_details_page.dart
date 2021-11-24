@@ -3,7 +3,7 @@ import 'package:music_app_clean_architecture/features/album_search/domain/entiti
 import 'package:music_app_clean_architecture/features/album_search/presentation/widgets/album_display.dart';
 
 class AlbumDetailsPage extends StatefulWidget {
-  final Album album;
+  final Album? album;
   AlbumDetailsPage({this.album});
 
   @override
@@ -15,7 +15,7 @@ class _AlbumDetailsPageState extends State<AlbumDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: FlatButton(
+        leading: TextButton(
           child: Icon(Icons.arrow_back_ios_rounded),
           onPressed: () => Navigator.of(context).pop(),
         ),

@@ -10,5 +10,5 @@ class ImageEntity extends Equatable {
   });
 //add random line
   @override
-  List<Object> get props => [text, size];
+  List<Object?> get props => [text, size];
 }

@@ -13,8 +13,8 @@ import '../../../../fixtures/fixture_reader.dart';
 class MockHttpClient extends Mock implements http.Client {}
 
 void main() {
-  AlbumRemoteDataSourceImpl albumRemoteDataSourceImpl;
-  MockHttpClient mockHttpClient;
+  late AlbumRemoteDataSourceImpl albumRemoteDataSourceImpl;
+  MockHttpClient? mockHttpClient;
 
   setUp(() {
     mockHttpClient = MockHttpClient();
@@ -22,7 +22,7 @@ void main() {
   });
 
   void setUpHttp(int statusCode) {
-    when(mockHttpClient.get(any)).thenAnswer((_) async => http.Response(fixture("album.json"), statusCode));
+    when(mockHttpClient!.get(Uri())).thenAnswer((_) async => http.Response(fixture("album.json"), statusCode));
   }
 
   group(('GetAlbum'), () {
@@ -35,8 +35,8 @@ void main() {
         setUpHttp(200);
         albumRemoteDataSourceImpl.getAlbum(albumName, artist);
 
-        verify(mockHttpClient.get(
-          'http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=$apiKey&artist=$artist&album=$albumName&format=json',
+        verify(mockHttpClient!.get(
+          Uri.parse('http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=$apiKey&artist=$artist&album=$albumName&format=json'),
         ));
       },
     );

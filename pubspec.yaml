@@ -5,33 +5,34 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
   # Service locator
-  get_it: ^5.0.0	
+  get_it: ^6.0.0	
   # Bloc for state management
-  flutter_bloc: ^6.1.0	  # Value equality
-  equatable: ^1.0.1
+  flutter_bloc: ^7.0.0	  # Value equality
+  equatable: ^2.0.0
   # Functional programming thingies
-  dartz: ^0.8.6
+  dartz: ^0.10.0
   # Remote API
-  data_connection_checker: ^0.3.4
-  http: ^0.12.0+2
-  cached_network_image: ^2.3.0
+  connectivity_plus: ^2.0.3
+  http: ^0.13.4
+  cached_network_image: ^3.1.0+1
   # Local cache
-  shared_preferences: ^0.5.3+4
+  shared_preferences: ^2.0.9
   # Env files support
-  flutter_dotenv: ^3.1.0
+  flutter_dotenv: ^5.0.2
   # HTML support
-  flutter_html: ^1.0.0
+  flutter_html: ^2.1.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  mockito: ^4.1.0
+  mockito: ^5.0.16
+  build_runner: ^2.1.5
 
 flutter:
   assets:

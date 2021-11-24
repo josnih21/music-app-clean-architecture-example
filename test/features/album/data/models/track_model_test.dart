@@ -9,7 +9,7 @@ import '../../../../fixtures/fixture_reader.dart';
 
 void main() {
   final trackModel = [
-    TrackModel(name: "Hit the Lights", duration: "257", url: "https://www.last.fm/music/Metallica/_/Hit+the+Lights")
+    TrackModel(name: "Hit the Lights", duration: 257, url: "https://www.last.fm/music/Metallica/_/Hit+the+Lights")
   ];
 
   test('should be a subclass of Track entity', () async {

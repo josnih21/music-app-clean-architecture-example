@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
+import 'package:music_app_clean_architecture/core/error/failures.dart';
 import 'package:music_app_clean_architecture/features/album_search/domain/entities/album.dart';
 import 'package:music_app_clean_architecture/features/album_search/domain/entities/image.dart';
 import 'package:music_app_clean_architecture/features/album_search/domain/entities/track.dart';
@@ -10,8 +11,8 @@ import 'package:music_app_clean_architecture/features/album_search/domain/usecas
 class MockAlbumRepository extends Mock implements AlbumRepository {}
 
 void main() {
-  GetAlbumUseCase usecase;
-  MockAlbumRepository mockAlbumRespository;
+  late GetAlbumUseCase usecase;
+  MockAlbumRepository? mockAlbumRespository;
 
   setUp(() {
     mockAlbumRespository = MockAlbumRepository();
@@ -27,19 +28,19 @@ void main() {
   ];
   final listeners = '1111';
   final tracks = [
-    Track(name: 'The four horsemen', url: 'www.dummy.com', duration: '3:50'),
-    Track(name: 'Seek and Destroy', url: 'www.dummy.com', duration: '3:30'),
+    Track(name: 'The four horsemen', url: 'www.dummy.com', duration: 240),
+    Track(name: 'Seek and Destroy', url: 'www.dummy.com', duration: 240),
   ];
 
   final album = Album(name: name, artist: artist, images: images, listeners: listeners, tracks: tracks, url: url);
 
   test('should get album from the repository', () async {
-    when(mockAlbumRespository.getAlbum(any, any)).thenAnswer((_) async => Right(album));
+    when(mockAlbumRespository!.getAlbum(any, any)).thenAnswer((_) async => Right(album));
 
-    final result = await usecase(Params(name: name, artist: artist));
+    final Either<Failure?, Album>? result = await usecase(Params(name: name, artist: artist));
 
     expect(result, Right(album));
-    verify(mockAlbumRespository.getAlbum(name, artist));
+    verify(mockAlbumRespository!.getAlbum(name, artist));
     verifyNoMoreInteractions(mockAlbumRespository);
   });
 }

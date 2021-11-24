@@ -3,13 +3,12 @@ import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_html/style.dart';
 import 'package:music_app_clean_architecture/features/album_search/domain/entities/album.dart';
 
 class AlbumDisplay extends StatelessWidget {
-  final Album album;
+  final Album? album;
 
-  const AlbumDisplay({Key key, this.album}) : super(key: key);
+  const AlbumDisplay({Key? key, this.album}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -19,7 +18,7 @@ class AlbumDisplay extends StatelessWidget {
             borderRadius: BorderRadius.circular(200.0),
             child: Image(
               image: CachedNetworkImageProvider(
-                album.getExtraLargeImageUrl(),
+                album!.getExtraLargeImageUrl()!,
                 maxHeight: 250,
                 maxWidth: 250,
               ),
@@ -32,7 +31,7 @@ class AlbumDisplay extends StatelessWidget {
             alignment: Alignment.centerLeft,
             padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: Text(
-              album.name,
+              album!.name!,
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
@@ -42,11 +41,11 @@ class AlbumDisplay extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
                 child: Text(
-                  album.artist,
+                  album!.artist!,
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
                 ),
               ),
-              album.wiki != null
+              album!.wiki != null
                   ? IconButton(
                       icon: Icon(Icons.info_outline),
                       onPressed: () => _setModalSheet(context),
@@ -57,15 +56,15 @@ class AlbumDisplay extends StatelessWidget {
             ],
           ),
           ListView.builder(
-            itemCount: album.tracks.length,
+            itemCount: album!.tracks!.length,
             physics: ScrollPhysics(),
             shrinkWrap: true,
             itemBuilder: (BuildContext context, dynamic index) {
               return Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: ListTile(
-                  title: Text(album.tracks[index].name),
-                  subtitle: Text(album.tracks[index].durationInMinutesAndSeconds()),
+                  title: Text(album!.tracks![index].name!),
+                  subtitle: Text(album!.tracks![index].durationInMinutesAndSeconds()),
                   trailing: Icon(Icons.headset),
                   tileColor: Colors.orange.withOpacity(0.5),
                 ),
@@ -85,7 +84,7 @@ class AlbumDisplay extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(10.0),
             child: Html(
-              data: album.wiki,
+              data: album!.wiki,
             ),
           ),
         );

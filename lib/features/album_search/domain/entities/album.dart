@@ -3,13 +3,13 @@ import 'package:music_app_clean_architecture/features/album_search/domain/entiti
 import 'package:music_app_clean_architecture/features/album_search/domain/entities/track.dart';
 
 class Album extends Equatable {
-  final String name;
-  final String artist;
-  final String url;
-  final List<ImageEntity> images;
-  final String listeners;
-  final List<Track> tracks;
-  final String wiki;
+  final String? name;
+  final String? artist;
+  final String? url;
+  final List<ImageEntity>? images;
+  final String? listeners;
+  final List<Track>? tracks;
+  final String? wiki;
 
   Album({
     this.name,
@@ -22,9 +22,9 @@ class Album extends Equatable {
   });
 
   @override
-  List<Object> get props => [name, artist, url, images, listeners, tracks];
+  List<Object?> get props => [name, artist, url, images, listeners, tracks];
 
-  String getExtraLargeImageUrl() {
-    return images.firstWhere((image) => image.size == 'extralarge').text;
+  String? getExtraLargeImageUrl() {
+    return images!.firstWhere((image) => image.size == 'extralarge').text;
   }
 }
